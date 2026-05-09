@@ -35,7 +35,7 @@ export const lessons: Lesson[] = [
     readTimeMinutes: 4,
     order: 1,
     excerpt: "A friendly intro to TypeScript and why it exists.",
-    content: `TypeScript is a strongly typed superset of JavaScript developed by Microsoft. Every valid JavaScript program is also a valid TypeScript program — TS adds an optional layer of static types on top, which the compiler checks before your code ever runs.
+    content: `## Overview\n\nTypeScript is a strongly typed superset of JavaScript developed by Microsoft. Every valid JavaScript program is also a valid TypeScript program — TS adds an optional layer of static types on top, which the compiler checks before your code ever runs.
 
 The big payoff is confidence. Types catch entire categories of bugs (typos, wrong shapes, missing arguments) at edit time, and they double as inline documentation. Modern editors use the type information for autocomplete, instant refactors, and "go to definition" across an entire codebase.
 
@@ -59,7 +59,7 @@ greet(42);         // ❌ Argument of type 'number' is not assignable to 'string
     readTimeMinutes: 5,
     order: 2,
     excerpt: "string, number, boolean, arrays, and the syntax for annotating them.",
-    content: `TypeScript's primitive types mirror JavaScript's: \`string\`, \`number\`, \`boolean\`, \`null\`, \`undefined\`, \`bigint\`, and \`symbol\`. You annotate a variable by adding \`: Type\` after its name.
+    content: `## Overview\n\nTypeScript's primitive types mirror JavaScript's: \`string\`, \`number\`, \`boolean\`, \`null\`, \`undefined\`, \`bigint\`, and \`symbol\`. You annotate a variable by adding \`: Type\` after its name.
 
 In most cases you don't need to annotate at all — TypeScript infers the type from the value. Annotations are most useful on function parameters and on variables that start out empty.
 
@@ -82,7 +82,7 @@ const point: [number, number] = [10, 20];   // tuple
     readTimeMinutes: 6,
     order: 3,
     excerpt: "Two ways to name a shape — when to use each.",
-    content: `Interfaces and type aliases both let you give a name to the shape of an object. For most everyday object shapes they're interchangeable.
+    content: `## Overview\n\nInterfaces and type aliases both let you give a name to the shape of an object. For most everyday object shapes they're interchangeable.
 
 The differences show up at the edges. Interfaces support declaration merging — you can declare the same interface twice and the fields combine. Type aliases can describe things interfaces can't, like unions, tuples, or computed/mapped types.
 
@@ -107,7 +107,7 @@ type UserWithStatus = User & { status: Status };
     readTimeMinutes: 5,
     order: 4,
     excerpt: "Parameters, return types, optional args, and function types.",
-    content: `Function parameters are annotated like variables, and a return type goes after the parameter list. Return types are usually inferred, but writing them explicitly on exported functions is a great habit — it locks in the contract.
+    content: `## Overview\n\nFunction parameters are annotated like variables, and a return type goes after the parameter list. Return types are usually inferred, but writing them explicitly on exported functions is a great habit — it locks in the contract.
 
 Mark parameters as optional with \`?\` or give them defaults. You can also describe a function's signature as a standalone type and reuse it.
 
@@ -133,7 +133,7 @@ const isEven: Predicate<number> = (n) => n % 2 === 0;
     readTimeMinutes: 7,
     order: 5,
     excerpt: "Reusable code that keeps its types — without resorting to any.",
-    content: `Generics let you write a function or type that works over many types while preserving their relationships. Think of them as type-level parameters.
+    content: `## Overview\n\nGenerics let you write a function or type that works over many types while preserving their relationships. Think of them as type-level parameters.
 
 A common first example is an identity function: it returns its argument unchanged. With generics we capture the input's type and use the same type as the return type, so callers get back exactly what they put in.
 
@@ -163,7 +163,7 @@ lengthOf([1, 2, 3]);   // ✅ 3
     readTimeMinutes: 6,
     order: 6,
     excerpt: "Type your component props with confidence.",
-    content: `In React + TS, you describe your component's props with an interface or type alias and pass it to the function as a generic-style annotation. This gives you autocomplete on usage and errors when a required prop is missing.
+    content: `## Overview\n\nIn React + TS, you describe your component's props with an interface or type alias and pass it to the function as a generic-style annotation. This gives you autocomplete on usage and errors when a required prop is missing.
 
 For children, prefer \`React.ReactNode\` over \`React.ReactChild\`. For event handlers, lean on React's built-in event types like \`React.MouseEvent<HTMLButtonElement>\`.
 
