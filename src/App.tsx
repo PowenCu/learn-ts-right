@@ -3,42 +3,43 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "@/hooks/useTheme";
+import { AuthProvider } from "@/hooks/useAuth";
+import { ProtectedRoute } from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
+import Lessons from "./pages/Lessons";
+import LessonView from "./pages/LessonView";
+import Playground from "./pages/Playground";
+import ProgressPage from "./pages/ProgressPage";
+import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
-import GettingStarted from "./pages/GettingStarted";
-import Concepts from "./pages/Concepts";
-import TypesPage from "./pages/concepts/TypesPage";
-import InterfacesPage from "./pages/concepts/InterfacesPage";
-import ClassesPage from "./pages/concepts/ClassesPage";
-import GenericsPage from "./pages/concepts/GenericsPage";
-import ModulesPage from "./pages/concepts/ModulesPage";
-import Advanced from "./pages/Advanced";
-import Resources from "./pages/Resources";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/getting-started" element={<GettingStarted />} />
-          <Route path="/concepts" element={<Concepts />} />
-          <Route path="/concepts/types" element={<TypesPage />} />
-          <Route path="/concepts/interfaces" element={<InterfacesPage />} />
-          <Route path="/concepts/classes" element={<ClassesPage />} />
-          <Route path="/concepts/generics" element={<GenericsPage />} />
-          <Route path="/concepts/modules" element={<ModulesPage />} />
-          <Route path="/advanced" element={<Advanced />} />
-          <Route path="/resources" element={<Resources />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <ThemeProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AuthProvider>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/lessons" element={<Lessons />} />
+              <Route path="/lessons/:slug" element={<LessonView />} />
+              <Route path="/playground" element={<Playground />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route
+                path="/progress"
+                element={<ProtectedRoute><ProgressPage /></ProtectedRoute>}
+              />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </AuthProvider>
+        </BrowserRouter>
+      </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
