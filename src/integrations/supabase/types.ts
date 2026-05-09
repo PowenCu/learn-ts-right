@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      lesson_feedback: {
+        Row: {
+          comment: string | null
+          created_at: string
+          id: string
+          lesson_slug: string
+          rating: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          comment?: string | null
+          created_at?: string
+          id?: string
+          lesson_slug: string
+          rating: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          comment?: string | null
+          created_at?: string
+          id?: string
+          lesson_slug?: string
+          rating?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       lesson_progress: {
         Row: {
           completed_at: string
