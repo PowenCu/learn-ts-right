@@ -13,6 +13,7 @@ import { Menu, Moon, Sun, FileCode2, LogOut, BarChart3 } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "@/hooks/useTheme";
 import { useAuth } from "@/hooks/useAuth";
+import { SearchDialog } from "./SearchDialog";
 
 const links = [
   { to: "/", label: "Home" },
@@ -52,6 +53,7 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <SearchDialog />
           <Button variant="ghost" size="icon" onClick={toggle} aria-label="Toggle theme">
             {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </Button>
